@@ -1,6 +1,8 @@
-# PATH malaria visualization — raw data
+# PATH malaria visualization — research data
 
-Downloaded/prepared on 2026-11-14. **No data cleaning, filtering of downloaded rows, merging, correction or effect-size conversion has been performed.** WHO/MAP requests select geography and indicators at the source; their responses are saved unchanged. Sources and scope are below.
+First-pass processed tables are now in `data/processed/`. Run `python3 scripts/clean_data.py` and `python3 scripts/validate_processed.py`. The Chinese summary is `reports/cleaning_report_zh.md`; methods and table definitions are in `data/processed/README.md`. Paper linking and original-source verification remain pending.
+
+Raw inputs downloaded/prepared on 2026-11-14. **Files in `data/raw/` remain unchanged.** WHO/MAP requests select geography and indicators at the source; their responses are saved unchanged. Processed outputs are separate. Sources and scope are below.
 
 ## Contents
 
