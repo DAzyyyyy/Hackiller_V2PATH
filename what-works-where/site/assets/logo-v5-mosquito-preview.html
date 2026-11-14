@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Works Where · Logo · Mosquito Inlay</title>
+<link rel="stylesheet" href="./logo-v5-mosquito.css">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b1113;color:#eef4f3;font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--line:rgba(213,235,231,.12);--muted:#8a9d9b;transition:background .35s,color .35s}
+body.light{background:#f2f4f1;color:#142829;--line:rgba(16,43,40,.13);--muted:#5c706c}
+.shell{max-width:1040px;margin:auto;padding:30px 36px 42px}header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:23px;gap:20px}.wordmark{display:flex;align-items:center;gap:13px;font-weight:550;font-size:17px;letter-spacing:-.5px}.controls{display:flex;gap:8px}button{font:inherit;color:inherit;background:transparent;border:1px solid var(--line);border-radius:30px;padding:8px 15px;cursor:pointer}button:hover{background:rgba(125,160,150,.12)}button:focus-visible{outline:2px solid #8cc9ff;outline-offset:4px}
+.stage{min-height:500px;display:flex;align-items:center;justify-content:center;position:relative}.stage:before{content:"";position:absolute;width:min(70vw,480px);height:350px;background:radial-gradient(ellipse,rgba(90,155,220,.12),transparent 68%);pointer-events:none}.stage .www-emblem{--logo-size:min(68vw,390px)}.identity{text-align:center}.identity h1{font-size:clamp(26px,4.5vw,42px);font-weight:500;letter-spacing:-1.7px;margin:0 0 8px}.identity p{color:var(--muted);font-size:12px;letter-spacing:2px;margin:0}.footer{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);margin-top:47px;padding-top:20px}.footer a{color:inherit;text-decoration:none}.footer a:hover{text-decoration:underline}@media(max-width:540px){.shell{padding:22px}.wordmark{font-size:14px;gap:7px}header .www-emblem{--logo-size:37px}button{font-size:12px;padding:7px 10px}.stage{min-height:390px}.footer{flex-direction:column}.controls{gap:5px}}
+</style>
+</head>
+<body>
+<main class="shell" id="logo-preview" data-logo-paused="false">
+<header>
+ <div class="wordmark"><div class="www-emblem www-emblem--small" aria-hidden="true"><div class="www-emblem__tilt"><img class="www-emblem__image" src="./what-works-where-logo-v5-mosquito.png" alt=""></div></div><span>What Works Where</span></div>
+ <div class="controls"><button id="pause" type="button" aria-pressed="false">暂停动效</button><button id="theme" type="button" aria-pressed="false">浅色背景</button></div>
+</header>
+<section class="stage" aria-label="动态标志预览">
+ <div class="www-emblem" id="interactive-logo" role="img" aria-label="What Works Where：冰蓝玻璃与银钛环带组成的立体W标志，表面饰有蚊子银线镶嵌纹样">
+  <div class="www-emblem__tilt"><img class="www-emblem__image" src="./what-works-where-logo-v5-mosquito.png" alt="" draggable="false"></div>
+ </div>
+</section>
+<div class="identity"><h1>What Works Where</h1><p>MALARIA PREVENTION EVIDENCE</p></div>
+<div class="footer"><span>移动鼠标，查看视差效果</span><a href="./what-works-where-logo-v5-mosquito.png" download>透明 PNG ↗</a></div>
+</main>
+<script src="./logo-v5-mosquito.js"></script>
+</body>
+</html>
