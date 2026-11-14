@@ -139,11 +139,45 @@ def classify(row) -> pd.Series:
     })
 
 
+TEAM_RATIOS = RATIO_TYPES | {"rate_ratio", "risk_ratio"}
+
+
+def teammate_flags(row) -> str:
+    """Recompute the teammate's QC flags (scripts/clean_data.py v1.1.0) under their names."""
+    num = lambda k: pd.to_numeric(row[k], errors="coerce")  # noqa: E731
+    v, lo, hi, lvl, p = (num(k) for k in ("statistic_value", "ci_lower", "ci_upper", "ci_level", "p_value"))
+    f = []
+    if int(row.get("exact_duplicate_rows") or 0) > 0:
+        f.append("exact_duplicate_rows")
+    if str(row.get("conflicting_association_id")) == "True":
+        f.append("conflicting_association_id")
+    if np.isnan(v):
+        f.append("missing_estimate")
+    if np.isnan(lo) != np.isnan(hi):
+        f.append("partial_ci")
+    if not np.isnan(lo) and not np.isnan(hi):
+        if lo > hi:
+            f.append("reversed_ci")
+        elif not np.isnan(v) and not lo <= v <= hi:
+            f.append("estimate_outside_ci")
+    if row["system_statistic_type"] in TEAM_RATIOS and any(not np.isnan(x) and x <= 0 for x in (lo, hi, v)):
+        f.append("nonpositive_ratio")
+    if not np.isnan(lvl) and not 0 < lvl < 1:
+        f.append("ci_level_out_of_range")
+    if not np.isnan(p) and not 0 <= p <= 1:
+        f.append("p_value_out_of_range")
+    if not np.isnan(p) and not row["p_value_equality"]:
+        f.append("p_operator_unspecified")
+    return "; ".join(f)
+
+
 def main() -> None:
     out = pd.concat([C, C.apply(classify, axis=1)], axis=1)
+    out["teammate_flags"] = C.apply(teammate_flags, axis=1)
     out.to_csv(INTERIM / "candidates_classified.csv", index=False)
     print(out.groupby(["intervention_class", "role"]).size().to_string())
     print(out[out.role == "effect on outcome"].groupby(["intervention_subtype", "outcome_tier"]).size().to_string())
+    print("teammate flags:", out.teammate_flags.str.split("; ").explode().value_counts().to_dict())
     print("plottable:", int(out.plottable_ratio.sum()), "flagged >20:",
           int(out.qc_flags.str.contains("percentage").sum()))
 

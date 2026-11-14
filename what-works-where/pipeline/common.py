@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 import os
 import time
 from datetime import datetime, timezone
@@ -11,7 +12,12 @@ import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
-RAW_CSV = DATA / "raw" / "system-public-graph-v1-associations.csv"
+TEAM_ROOT = ROOT.parent  # the teammate's repository root (Hackiller_V2PATH)
+RESTORED = TEAM_ROOT / "data" / "restored" / "system"   # produced by scripts/restore_system.py (SHA-256 checked)
+_RESTORED_ASSOC = RESTORED / "system-public-graph-v1-associations.csv"
+RAW_CSV = _RESTORED_ASSOC if _RESTORED_ASSOC.exists() else DATA / "raw" / "system-public-graph-v1-associations.csv"
+STUDIES_CSV = RESTORED / "system-public-graph-v1-studies.csv"
+TEAM_PROCESSED = TEAM_ROOT / "data" / "processed"
 INTERIM = DATA / "interim"
 GRAPH = DATA / "graph"
 VERIFIED = DATA / "verified"
@@ -89,3 +95,30 @@ class SystemAPI:
 def write_json(path: Path, obj) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=1, ensure_ascii=False, default=str))
+
+
+# Country name -> ISO 3166 alpha-3 (shared by all steps)
+ISO3 = {
+    "Benin": "BEN", "Burkina Faso": "BFA", "Burundi": "BDI", "Cameroon": "CMR", "Central African Republic": "CAF",
+    "Chad": "TCD", "Congo": "COG", "Democratic Republic of the Congo": "COD", "Côte d'Ivoire": "CIV",
+    "Equatorial Guinea": "GNQ", "Ethiopia": "ETH", "Gabon": "GAB", "Gambia": "GMB", "The Gambia": "GMB", "Ghana": "GHA",
+    "Guinea-Bissau": "GNB", "Guinea": "GIN", "Kenya": "KEN", "Liberia": "LBR", "Madagascar": "MDG", "Malawi": "MWI",
+    "Mali": "MLI", "Mauritania": "MRT", "Mozambique": "MOZ", "Niger": "NER", "Nigeria": "NGA", "Rwanda": "RWA",
+    "Senegal": "SEN", "Sierra Leone": "SLE", "Somalia": "SOM", "South Sudan": "SSD", "Sudan": "SDN",
+    "Tanzania": "TZA", "Togo": "TGO", "Uganda": "UGA", "Zambia": "ZMB", "Zimbabwe": "ZWE", "Angola": "AGO",
+    "Eritrea": "ERI", "Namibia": "NAM", "India": "IND", "Myanmar": "MMR", "Cambodia": "KHM", "Laos": "LAO",
+    "Vietnam": "VNM", "Thailand": "THA", "Indonesia": "IDN", "Papua New Guinea": "PNG", "Solomon Islands": "SLB",
+    "Vanuatu": "VUT", "Bangladesh": "BGD", "Pakistan": "PAK", "Afghanistan": "AFG", "Sri Lanka": "LKA",
+    "Brazil": "BRA", "Peru": "PER", "Colombia": "COL", "Venezuela": "VEN", "Haiti": "HTI", "Yemen": "YEM",
+}
+
+
+def to_iso3(text: str) -> str:
+    """'Burkina Faso; Mali' or 'BFA;MLI' or 'multi-country' -> 'BFA;MLI' (unknown parts dropped)."""
+    out = []
+    for part in re.split(r"[;,]", text or ""):
+        part = part.strip()
+        code = part if re.fullmatch(r"[A-Z]{3}", part) else ISO3.get(part)
+        if code and code not in out:
+            out.append(code)
+    return ";".join(out)

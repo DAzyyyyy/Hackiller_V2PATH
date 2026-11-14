@@ -28,8 +28,15 @@
   "graph_association_id": "",
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
-  "verification_note": "API row had no net type; arm restored from paper (25.6% vs 45.8%)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "verification_note": "API row had no net type; arm restored from paper (25.6% vs 45.8%); numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA",
+  "fulltext_location": "Table 2, chlorfenapyr, 24 months, intention-to-treat",
+  "fulltext_quoted_text": "24 months | 326/1272 (25.6%) | 0.45 (0.30-0.67) | 0.0001 | 131/598 (21.9%) | 0.39 (0.25-0.63) | 0.0001",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  },
  {
   "result_id": "TZ24-PBO",
@@ -60,8 +67,15 @@
   "graph_association_id": "",
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
-  "verification_note": "API row had no net type; arm restored from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "verification_note": "API row had no net type; arm restored from paper; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA",
+  "fulltext_location": "Table 2, piperonyl butoxide, 24 months, intention-to-treat",
+  "fulltext_quoted_text": "24 months | 512/1259 (40.7%) | 0.99 (0.67-1.45) | 0.9607 | 139/356 (39.0%) | 0.97 (0.60-1.55) | 0.8891",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  },
  {
   "result_id": "TZ24-PPF",
@@ -92,8 +106,15 @@
   "graph_association_id": "",
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
-  "verification_note": "API row had no net type; arm restored from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "verification_note": "API row had no net type; arm restored from paper; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA",
+  "fulltext_location": "Table 2, pyriproxyfen, 24 months, intention-to-treat",
+  "fulltext_quoted_text": "24 months | 472/1258 (37.5%) | 0.79 (0.54-1.17) | 0.2354 | 151/441 (34.2%) | 0.71 (0.45-1.13) | 0.1510",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  },
  {
   "result_id": "TZ36-CFP",
@@ -125,7 +146,14 @@
   "graph_original_label": "standard pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'standard pyrethroid'; paper: chlorfenapyr-pyrethroid (22.8% vs 37.4%)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "TZ36-PPF",
@@ -157,7 +185,14 @@
   "graph_original_label": "PBO-pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'PBO-pyrethroid'; paper: pyriproxyfen-pyrethroid",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "TZ36-PBO",
@@ -189,7 +224,14 @@
   "graph_original_label": "chlorfenapyr-pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'chlorfenapyr-pyrethroid'; paper: PBO-pyrethroid",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "BJ24-CFP",
@@ -221,7 +263,14 @@
   "graph_original_label": "chlorfenapyr-pyrethroid net",
   "verification_status": "checked against paper",
   "verification_note": "API + CSV + paper agree. 0.56 vs 1.03 cases per child-year; paper reports p<0.0001 (API stores 0.0001)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/",
+  "iso3": "BEN",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "BJ24-PPF",
@@ -253,7 +302,14 @@
   "graph_original_label": "",
   "verification_status": "checked against paper",
   "verification_note": "interval compatible with benefit and with no difference",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/",
+  "iso3": "BEN",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "BJ36-CFP",
@@ -285,7 +341,14 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "graph has the study but no associations; value from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/",
+  "iso3": "BEN",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "BJ36-PPF",
@@ -317,7 +380,14 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "graph has the study but no associations; value from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/",
+  "iso3": "BEN",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "COCH-ITN-MORT",
@@ -348,8 +418,15 @@
   "graph_association_id": "",
   "graph_original_label": "",
   "verification_status": "paper supplement",
-  "verification_note": "systematic review (5 trials) - shown as a summary marker; pools older trials",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/"
+  "verification_note": "systematic review (5 trials) - shown as a summary marker; pools older trials; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/",
+  "iso3": "",
+  "fulltext_location": "Effects of interventions, child mortality",
+  "fulltext_quoted_text": "Pooled analysis of five trials showed that mortality from all causes was 17% lower in children using an ITN than those without a net (rate ratio 0.83, 95% CI 0.77 to 0.89: 5 trials, 200,833 participants Analysis 1.1).",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  },
  {
   "result_id": "COCH-ITN-CLIN",
@@ -380,8 +457,15 @@
   "graph_association_id": "",
   "graph_original_label": "",
   "verification_status": "paper supplement",
-  "verification_note": "systematic review (5 trials) - shown as a summary marker",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/"
+  "verification_note": "systematic review (5 trials) - shown as a summary marker; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/",
+  "iso3": "",
+  "fulltext_location": "Effects of interventions, P. falciparum uncomplicated episodes",
+  "fulltext_quoted_text": "Overall, the reduction in the rate of clinical episodes was almost 50% (rate ratio 0.55, 95% CI 0.48 to 0.64; 5 trials, 35,551 participants Analysis 1.2).",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  },
  {
   "result_id": "R21-SEAS",
@@ -392,8 +476,8 @@
   "intervention_class": "vaccines",
   "intervention": "R21/Matrix-M",
   "comparator": "rabies control vaccine",
-  "country": "Burkina Faso, Kenya, Mali, Tanzania",
-  "site": "seasonal-transmission sites",
+  "country": "Burkina Faso; Mali",
+  "site": "seasonal sites: Nanoro (BFA), Bougouni (MLI)",
   "population": "children 5-36 mo",
   "outcome_tier": "clinical malaria",
   "outcome_definition": "time to first clinical malaria episode",
@@ -411,9 +495,16 @@
   "graph_csv_status": "not in filtered CSV",
   "graph_association_id": "",
   "graph_original_label": "",
-  "verification_status": "paper supplement",
-  "verification_note": "VE 75% (71-79) reported; HR = 1 - VE",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/"
+  "verification_status": "checked against full text",
+  "verification_note": "Table 2 adjusted VE 75% (71-79) -> HR 0.25; full-text check by AI-2 corrected sites to BFA;MLI",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/",
+  "iso3": "BFA;MLI",
+  "fulltext_location": "Table 2, first clinical episode, seasonal sites, adjusted VE",
+  "fulltext_quoted_text": "R21/Matrix-M | 1559 | .. | .. | .. | .. | 0.24 (301/1275.4) | 0.75 (0.71-0.78) | <0.0001 | 0.75 (0.71-0.79) | <0.0001",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "N",
+  "fulltext_discrepancy_note": "Numeric HR=1-VE matches. Context mismatch: row lists all four trial countries, but seasonal sites are Nanoro (BFA) and Bougouni (MLI); use iso3 BFA;MLI. Table adjusted VE, 12 months after dose 3; outcome first clinical episode."
  },
  {
   "result_id": "R21-STD",
@@ -424,8 +515,8 @@
   "intervention_class": "vaccines",
   "intervention": "R21/Matrix-M",
   "comparator": "rabies control vaccine",
-  "country": "Burkina Faso, Kenya, Mali, Tanzania",
-  "site": "standard (perennial) sites",
+  "country": "Burkina Faso; Kenya; Tanzania",
+  "site": "standard sites: Dande (BFA), Kilifi (KEN), Bagamoyo (TZA)",
   "population": "children 5-36 mo",
   "outcome_tier": "clinical malaria",
   "outcome_definition": "time to first clinical malaria episode",
@@ -443,9 +534,16 @@
   "graph_csv_status": "not in filtered CSV",
   "graph_association_id": "",
   "graph_original_label": "",
-  "verification_status": "paper supplement",
-  "verification_note": "VE 68% (61-74) reported; HR = 1 - VE",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/"
+  "verification_status": "checked against full text",
+  "verification_note": "Table 2 adjusted VE 68% (61-74) -> HR 0.32; full-text check by AI-2 corrected sites to BFA;KEN;TZA",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/",
+  "iso3": "BFA;KEN;TZA",
+  "fulltext_location": "Table 2, first clinical episode, standard sites, adjusted VE",
+  "fulltext_quoted_text": "R21/Matrix-M | 1543 | .. | .. | .. | .. | 0.12 (163/1406.0) | 0.68 (0.60-0.74) | <0.0001 | 0.68 (0.61-0.74) | <0.0001",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "N",
+  "fulltext_discrepancy_note": "Numeric HR=1-VE matches. Context mismatch: row lists all four trial countries, but standard sites are Dande (BFA), Kilifi (KEN), Bagamoyo (TZA); use iso3 BFA;KEN;TZA. Table adjusted VE; first clinical episode, 12 months."
  },
  {
   "result_id": "RTSS-SMC-COMBO",
@@ -477,7 +575,14 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "PE 62.8% (58.4-66.8) of combination vs SMC alone; underlying ratio per paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/",
+  "iso3": "BFA;MLI",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "RTSS-vs-SMC",
@@ -509,7 +614,14 @@
   "graph_original_label": "",
   "verification_status": "comparator restored",
   "verification_note": "non-inferiority comparison (margin 1.20); comparator is SMC not placebo",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/",
+  "iso3": "BFA;MLI",
+  "fulltext_location": null,
+  "fulltext_quoted_text": null,
+  "fulltext_value_found": null,
+  "fulltext_ci_found": null,
+  "fulltext_matches_our_value": null,
+  "fulltext_discrepancy_note": null
  },
  {
   "result_id": "ACCESS-SMC-CC",
@@ -519,8 +631,8 @@
   "short_ref": "ACCESS-SMC 2020 Lancet",
   "intervention_class": "smc",
   "intervention": "SMC (SP+AQ) at scale",
-  "comparator": "no SMC in previous 28 days",
-  "country": "Burkina Faso, Chad, Guinea, Mali, Niger, Nigeria, The Gambia",
+  "comparator": "no SMC in the previous 42 days",
+  "country": "case-control component in 5 of the 7 programme countries",
   "site": "programme delivery",
   "population": "children < 5 y",
   "outcome_tier": "clinical malaria",
@@ -539,9 +651,16 @@
   "graph_csv_status": "not in filtered CSV",
   "graph_association_id": "",
   "graph_original_label": "",
-  "verification_status": "paper supplement",
-  "verification_note": "PE 88.2% (78.7-93.4); individual-level protection in the 28 days after a dose",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "verification_status": "checked against full text",
+  "verification_note": "PE 88.2% (78.7-93.4) within 28 days of a dose vs children without SMC in the previous 42 days (Figure 2A); case-control studies in 5 countries (PMID 34495978). Comparator corrected by AI-2",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "",
+  "fulltext_location": "Results, Effectiveness of SMC paragraph; Figure 2A caption",
+  "fulltext_quoted_text": "The pooled estimate of the protective effectiveness of SMC in reducing incidence of clinical malaria within 28 days of administration was 88.2% (95% CI 78.7-93.4; figure 2A).",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "N",
+  "fulltext_discrepancy_note": "Numeric 1-PE conversion matches. Comparator mismatch: Figure 2A specifies no SMC within the last 42 days, not no SMC in previous 28 days. 28 days is the protection window. Case-control data cover five countries within the seven-country programme."
  },
  {
   "result_id": "ACCESS-SMC-NG",
@@ -572,8 +691,15 @@
   "graph_association_id": "",
   "graph_original_label": "",
   "verification_status": "paper supplement",
-  "verification_note": "reduction 25.5% (6.1-40.9); population-level impact",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "verification_note": "reduction 25.5% (6.1-40.9); population-level impact; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "NGA",
+  "fulltext_location": "Table 2, malaria outpatients, Nigeria, Overall",
+  "fulltext_quoted_text": "Nigeria | 8 clinics | 26.0% (-0.7 to 45.7) | 25.0% (5.4 to 40.5) | 25.5% (6.1 to 40.9)",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. ratio = 1 - published percentage/100; reverse interval endpoints."
  },
  {
   "result_id": "ACCESS-SMC-GM",
@@ -604,8 +730,15 @@
   "graph_association_id": "",
   "graph_original_label": "",
   "verification_status": "paper supplement",
-  "verification_note": "reduction 55.2% (42.0-65.3); population-level impact",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "verification_note": "reduction 55.2% (42.0-65.3); population-level impact; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "GMB",
+  "fulltext_location": "Table 2, malaria outpatients, The Gambia, Overall",
+  "fulltext_quoted_text": "The Gambia† | DHIS2 | 53.0% (37.5 to 64.7) | 58.8% (43.0 to 70.3) | 55.2% (42.0 to 65.3)",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. ratio = 1 - published percentage/100; reverse interval endpoints."
  },
  {
   "result_id": "MALI-SMC5",
@@ -636,7 +769,14 @@
   "graph_association_id": "V-7UaId_15",
   "graph_original_label": "",
   "verification_status": "time point restored",
-  "verification_note": "API also returns IRR 0.66 for the November (round 4) comparison; month taken from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36704118/"
+  "verification_note": "API also returns IRR 0.66 for the November (round 4) comparison; month taken from paper; numbers confirmed in full text (AI-2)",
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36704118/",
+  "iso3": "MLI",
+  "fulltext_location": "Table 4, SMC group, fifth round (December)",
+  "fulltext_quoted_text": "SMC group | 0.66 | [0.35-1.22] | 0.186 | 0.49 | [0.26-0.94] | 0.032",
+  "fulltext_value_found": "Y",
+  "fulltext_ci_found": "Y",
+  "fulltext_matches_our_value": "Y",
+  "fulltext_discrepancy_note": "Numbers, intervention, comparator, outcome and follow-up checked in supplied XML. original ratio retained."
  }
 ]
