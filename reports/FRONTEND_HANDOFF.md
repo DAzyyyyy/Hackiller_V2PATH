@@ -2,7 +2,9 @@
 
 **只需加载 `what-works-where/site/data/frontend-data.json`。** 不需要解析CSV、再合并两个人的输出或请求外部API。
 
-schema_version: `1.0.0`。输入来自已整合的 evidence-pipeline 分支；源文件和SHA-256记录在JSON的 `meta.inputs`。
+schema_version: `1.0.1`。输入来自已整合的 evidence-pipeline 分支；源文件和SHA-256记录在JSON的 `meta.inputs`。
+
+**1.0.1 修复 MAP 发病率缩放：** `MAP / Pf_incidence-rate` 的 value、lower、upper 已乘1000，单位为每千人每年病例数。前端直接显示，**不要再次乘1000**。原始尺度和数值保留在 `normalization`。WHO值不需要此次换算。坦桑尼亚2025年应为132.365（72.406–192.451）例/千人/年。
 
 ## 文件内容
 

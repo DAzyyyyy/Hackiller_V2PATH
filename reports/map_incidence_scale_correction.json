@@ -1,0 +1,24 @@
+{
+  "issue": "MAP Trends incidence raw rates were mislabeled as per-1000 without applying UI scaling.",
+  "resolution": "Multiply MAP Pf_incidence-rate mean/lower/upper by 1000; raw downloads unchanged; WHO unchanged.",
+  "sources": [
+    {
+      "url": "https://data.malariaatlas.org/chunk-VY3PUD7A.js",
+      "sha256": "5244f21fe3e736a23fce7b05166244aff657239bda847ee9f2b37e7cae751b3e",
+      "excerpt": "var Lc={label:\"Incidence Rate\",name:Oi.INCIDENCE,subcategory:Cn.PF,unitDescription:\"Cases per Thousand\",unit:1e3,type:ni.RATE,geoServerLayer:Cr.PF_INCIDENCE_RATE,geoServerWorkspace:lr.MALARIA,definition:\"The number of newly diagnosed Plasmodium falciparum cases per 1,000 population during a defined year\",spatialExtent:ar.GLOBAL}"
+    },
+    {
+      "url": "https://data.malariaatlas.org/chunk-5QSIWLNT.js",
+      "sha256": "74d4fbba51731095845942277adb63680706bdb438d5aa7fbed51f0d4b1a06ee",
+      "excerpt": "oe=x.type===wi.RATE?x.unit:1/x.unit;I.push({year:Y,value:A*oe,upperCI:z*oe,lowerCI:re*oe})}let G={metric:x,values:I},O=f.get(k);if(!O)t"
+    }
+  ],
+  "regression_case": {
+    "country": "TZA",
+    "year": 2025,
+    "raw_mean": 0.132365018720074,
+    "correct_per_1000_mean": 132.365018720074,
+    "lower": 72.4064512904023,
+    "upper": 192.451274719277
+  }
+}

@@ -5,7 +5,7 @@ from build_frontend_bundle import ROOT,OUTPUT,CORE,build
 
 def main():
  data=json.loads(OUTPUT.read_text(),parse_constant=lambda x:(_ for _ in ()).throw(ValueError(x)))
- assert data['schema_version']=='1.0.0'
+ assert data['schema_version']=='1.0.1'
  rows=data['results'];candidates=data['candidates'];ctx=data['context']
  assert len({r['id'] for r in rows})==len(rows)==53
  assert len({r['system_id'] for r in candidates})==len(candidates)==481
@@ -41,12 +41,19 @@ def main():
  for r in ctx['country_year']:
   assert r['iso3'] in CORE and isinstance(r['year'],int) and isinstance(r['flags'],list)
   if r['source']=='MAP':assert r['release']=='202608'
+  if r['source']=='MAP' and r['indicator']=='Pf_incidence-rate':
+   assert r['normalization']['already_applied'] is True
+   if r['value'] is not None:assert math.isclose(r['value'],r['normalization']['source_value']*1000)
   if r['indicator']=='MALARIA_IRS_COVERAGE':assert r['unit']=='people'
  for r in ctx['pf8_sp']:
   n=r['n_determined'];assert n==r['n_resistant']+r['n_sensitive']
   if n:assert math.isclose(r['resistant_share'],r['n_resistant']/n)
   else:assert r['resistant_share'] is None
  assert {r['year'] for r in ctx['pf8_sp'] if r['iso3']=='BFA'}=={2008}
+ tza=next(r for r in ctx['country_year'] if r['source']=='MAP' and r['indicator']=='Pf_incidence-rate' and r['iso3']=='TZA' and r['year']==2025)
+ assert math.isclose(tza['value'],132.365018720074)
+ assert math.isclose(tza['lower'],72.4064512904023)
+ assert math.isclose(tza['upper'],192.451274719277)
  for source in data['meta']['inputs']:
   assert hashlib.sha256((ROOT/source['path']).read_bytes()).hexdigest()==source['sha256']
  first=OUTPUT.read_bytes();build();assert OUTPUT.read_bytes()==first,'Build is not deterministic within the same input revision'

@@ -45,6 +45,10 @@ def main():
     assert len({(r['country_iso3'],r['year'],r['metric'],r['release']) for r in map_rows})==len(map_rows)
     for r in map_rows:
         if r['value_raw']==0:assert r['value'] is None and 'zero_may_mean_missing' in r['flags']
+        factor=1000 if r['metric']=='Pf_incidence-rate' else 1
+        assert r['normalization_factor']==factor
+        for clean,raw in [('value','value_raw'),('lower','lower_raw'),('upper','upper_raw')]:
+            if r[clean] is not None:assert r[clean]==r[raw]*factor
     samples=load('pf8_samples');assert len(samples)==q['pf8']['input_samples']
     selected=[r for r in samples if r['aggregation_eligible']]
     assert len({r['case_group_id'] for r in selected})==len(selected)

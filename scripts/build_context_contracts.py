@@ -1,4 +1,4 @@
-"""Export AI-2 context contracts from first-pass processed files. No unit conversion."""
+"""Export AI-2 contracts. Processed MAP incidence already uses per-1000-year units."""
 from pathlib import Path
 import csv
 import json

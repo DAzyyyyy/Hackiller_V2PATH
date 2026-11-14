@@ -234,9 +234,15 @@ def clean_map():
         if any(x==0 for x in v.values()):flags.append('zero_may_mean_missing')
         if raw_mean is not None and (raw_mean<0 or metric!='Pf_incidence-rate' and raw_mean>1):flags.append('value_out_of_range')
         if lo is not None and hi is not None and (lo>hi or raw_mean is not None and not lo<=raw_mean<=hi):flags.append('invalid_interval')
+        # Trends API returns incidence per person-year. Official MAP UI multiplies
+        # rate values and bounds by metric.unit=1000 for "Cases per Thousand".
+        factor=1000 if metric=='Pf_incidence-rate' else 1
         rows.append({'source':'MAP','country_iso3':country,'year':year,'metric':metric,'release':version,
-                     'value':None if 'zero_may_mean_missing' in flags else raw_mean,'lower':None if lo==0 else lo,'upper':None if hi==0 else hi,
+                     'value':None if 'zero_may_mean_missing' in flags or raw_mean is None else raw_mean*factor,
+                     'lower':None if lo in (0,None) else lo*factor,'upper':None if hi in (0,None) else hi*factor,
                      'value_raw':raw_mean,'lower_raw':lo,'upper_raw':hi,
+                     'source_unit':'cases_per_person_per_year' if metric=='Pf_incidence-rate' else 'proportion',
+                     'normalization_factor':factor,
                      'unit':'cases_per_1000_population_per_year' if metric=='Pf_incidence-rate' else 'proportion',
                      'population':'children_age_2_10' if metric=='Pf_PR-rate' else 'all_ages',
                      'estimate_type':'modelled','source_files':source_files[(country,year,metric,version)],'flags':flags})

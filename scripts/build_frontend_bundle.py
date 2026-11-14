@@ -58,6 +58,8 @@ def build():
  audit_by_id={r['result_id']:r for r in audits};ft_by_id={r['result_id']:r for r in ft}
  countries=load_csv('what-works-where/data/context/countries.csv')
  context=load_csv('what-works-where/data/context/context_country_year.csv')
+ processed_map=load_json('data/processed/map_context.json')
+ map_index={(r['country_iso3'],r['year'],r['metric']):r for r in processed_map}
  resistance=load_csv('what-works-where/data/context/pf8_sp_country_year.csv')
  markers=load_csv('what-works-where/data/context/pf8_aq_markers_country_year.csv')
  graph=load_json('what-works-where/site/data/graph.json')
@@ -123,6 +125,10 @@ def build():
  for r in context:
   for k in ['value','lower','upper','year']:r[k]=num(r[k])
   r['release']=r['release'] or None;r['flags']=flags(r['flags'])
+  if r['source']=='MAP' and r['indicator']=='Pf_incidence-rate':
+   original=map_index[(r['iso3'],r['year'],r['indicator'])]
+   r['normalization']={'source_unit':original['source_unit'],'factor':1000,'already_applied':True,
+     'source_value':original['value_raw'],'source_lower':original['lower_raw'],'source_upper':original['upper_raw']}
  for collection in [resistance,markers]:
   for r in collection:
    for k in r:
@@ -149,7 +155,7 @@ def build():
   'map_records':sum(r['source']=='MAP' for r in context),'pf8_sp_records':len(resistance),'pf8_aq_marker_records':len(markers),
   'core_countries':sorted(CORE),'country_registry_entries':len(registry),
   'counting_note':'Results are comparisons, not independent trials. Candidate and reviewed collections overlap; do not add their counts.'}
- bundle={'schema_version':'1.0.0','meta':{'title':'Malaria: What Works Where — frontend data',
+ bundle={'schema_version':'1.0.1','meta':{'title':'Malaria: What Works Where — frontend data',
   'data_as_of':'2026-11-14','source_integration_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
   'inputs':[{'path':str(p.relative_to(ROOT)),'sha256':sha(p)} for p in inputs],
   'licenses':[{'source':'System Public Graph','license':'CC BY-NC 4.0'},{'source':'MalariaGEN Pf8','license':'CC BY 4.0'},
