@@ -1,0 +1,3 @@
+# Netlify Git-connected deployment: serve the static frontend, not the repository root.
+[build]
+  publish = "frontend"

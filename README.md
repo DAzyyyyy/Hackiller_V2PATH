@@ -19,6 +19,14 @@ Open **[http://localhost:8000/frontend/](http://localhost:8000/frontend/)**.
 - [Budget Planner](http://localhost:8000/frontend/forecast.html): compare user-defined programme costs, coverage and completion assumptions; export a scenario.
 - [Evidence Playbook](http://localhost:8000/frontend/playbook.html): explore illustrative setting-specific evidence summaries.
 
+## Deploy on Netlify
+
+For a Git-connected deployment, keep **Base directory empty**, **Build command empty**, and set **Publish directory to `frontend`**. The root `netlify.toml` sets this publish directory automatically. Redeploy after updating the settings.
+
+For a manual drag-and-drop deployment, upload the **contents of `frontend/`** as the site folder (or a ZIP whose root contains `index.html`, `app.js`, `assets/`, `data/`, and `vendor/`). Uploading the whole repository leaves `index.html` nested under `frontend/`, causing a 404 at `/`. The root `netlify.toml` applies to Git builds, not a manual upload's directory structure.
+
+In the Netlify deploy file browser, confirm `/index.html` exists at the deployed root. The production domain should then open the map without appending `/frontend/`.
+
 ## Publish a public website
 
 This project is a static site: deploy **only `frontend/`**, with no build command. A prepared [GitHub Pages workflow](.github/workflows/pages.yml) publishes that directory at the site root. It is manual until you choose to publish.
