@@ -46,6 +46,12 @@ def main() -> None:
     ver["iso3"] = ver["country"].map(to_iso3)
     for c in ("estimate", "ci_lower", "ci_upper", "followup_months", "publication_year"):
         ver[c] = pd.to_numeric(ver[c], errors="coerce")
+    ft_path = VERIFIED / "fulltext_checks.csv"   # produced by AI-2 (C1)
+    if ft_path.exists():
+        ft = pd.read_csv(ft_path, dtype=str, keep_default_na=False)
+        ft_cols = ["location", "quoted_text", "value_found", "ci_found", "matches_our_value", "discrepancy_note"]
+        ver = ver.merge(ft[["result_id", *ft_cols]].add_prefix("fulltext_").rename(
+            columns={"fulltext_result_id": "result_id"}), on="result_id", how="left")
     write_json(SITE_DATA / "verified.json", json.loads(ver.to_json(orient="records")))
 
     gc_path = VERIFIED / "evidence_graph_checked.csv"
@@ -107,10 +113,18 @@ def main() -> None:
         "concepts": {k: {"system_id": v["system_id"], "wikidata_id": v.get("wikidata_id")}
                      for k, v in ctx["concepts"].items()},
         "anchor_coverage": ctx["anchor_coverage"],
-        "who": who_context(),
+        "who": [],
     }
+    ctx_dir = VERIFIED.parent / "context"   # produced by AI-2 (B1-B6); offline, replaces the live WHO pull
+    for key, fname in [("countries", "countries.csv"), ("country_year", "context_country_year.csv"),
+                       ("pf8_sp", "pf8_sp_country_year.csv"), ("pf8_aq_markers", "pf8_aq_markers_country_year.csv")]:
+        f = ctx_dir / fname
+        context[key] = json.loads(pd.read_csv(f).to_json(orient="records")) if f.exists() else []
+    if not context["country_year"]:
+        context["who"] = who_context()
     write_json(SITE_DATA / "context.json", context)
-    print(json.dumps(context["summary"], indent=1), "| who rows:", len(context["who"]))
+    print(json.dumps(context["summary"], indent=1), "| context:",
+          {k: len(context[k]) for k in ("countries", "country_year", "pf8_sp", "pf8_aq_markers", "who")})
 
 
 if __name__ == "__main__":
