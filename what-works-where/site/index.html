@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Works Where</title>
+<meta name="description" content="How malaria prevention effects vary by setting and over time — evidence from the System Public Graph, checked against the original trials.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <h1>What works where</h1>
+    <p class="lede">Malaria prevention evidence depends on the comparison, the setting and the follow-up period. This dashboard compares bed nets, seasonal malaria chemoprevention (SMC) and malaria vaccines using findings extracted by the <a href="https://www.system.com/public">System Public Graph</a>, each checked against the original paper.</p>
+    <div id="funnel" class="funnel" aria-label="How the evidence set was built"></div>
+  </div>
+</header>
+
+<nav class="tabs wrap" aria-label="Sections">
+  <a href="#time">Over time</a>
+  <a href="#setting">By setting and question</a>
+  <a href="#index">Evidence index</a>
+  <a href="#graph">How the graph sees malaria</a>
+  <a href="#method">Method</a>
+</nav>
+
+<main class="wrap">
+
+<section id="time" class="panel">
+  <h2>The same nets, two countries, three years</h2>
+  <p class="intro">Two cluster-randomised trials compared three newer nets with a standard pyrethroid net. Each row is one comparison at one follow-up. Points left of the line mean fewer infections or cases with the newer net. Tanzania measured infection in surveys; Benin counted clinical cases, so the two are shown side by side, not pooled.</p>
+  <div class="legend" id="net-legend"></div>
+  <div class="facets" id="forest-nets"></div>
+  <p class="takeaway" id="net-takeaway"></p>
+</section>
+
+<section id="setting" class="panel">
+  <h2>Same intervention, different question</h2>
+  <p class="intro">A single “effectiveness” number hides what was compared, for whom and over what window. These results come from the same intervention families but answer different questions.</p>
+  <div id="forest-questions"></div>
+</section>
+
+<section id="index" class="panel">
+  <h2>Evidence index: what the graph holds</h2>
+  <p class="intro">Every association in the fixed Dataverse snapshot of the System Public Graph that names a net, SMC or a malaria vaccine inside a malaria paper. These rows are <strong>as extracted</strong> and not yet reviewed; open a row to see its source. Circle area shows the number of papers.</p>
+  <div class="filters" id="filters"></div>
+  <div id="matrix" class="matrix" role="grid" aria-label="Papers by intervention and outcome"></div>
+  <div id="cell-detail"></div>
+</section>
+
+<section id="graph" class="panel">
+  <h2>How the graph sees malaria</h2>
+  <p class="intro">Concepts the System Public Graph links directly to <em>malaria</em> as an upstream factor, ranked by number of supporting studies. Bed nets lead the interventions, and climate and environment (rain, temperature, humidity, forest) are among the most-studied settings that shape transmission.</p>
+  <div class="legend" id="nb-legend"></div>
+  <div id="neighbours" class="bars"></div>
+  <h3>Where the landmark trials sit in the graph</h3>
+  <p class="intro">The three layers that this dashboard draws on. The Beta API has a study record for every trial; some have no extracted findings, and the filtered snapshot keeps only one of these rows.</p>
+  <div id="coverage"></div>
+  <h3>Country context (WHO, modelled)</h3>
+  <p class="intro">Share of the population sleeping under an insecticide-treated net. Modelled national estimates, a different scale from a village trial: context, not a cause of any trial result.</p>
+  <div id="who" class="small-multiples"></div>
+</section>
+
+<section id="method" class="panel method">
+  <h2>Method and limits</h2>
+  <ol>
+    <li><strong>Find.</strong> Scanned all 1,999,877 associations in the System Public Graph snapshot (Harvard Dataverse v2.1, CC BY-NC 4.0). Kept rows naming a net, SMC or malaria vaccine in a paper that mentions malaria, Plasmodium or Anopheles.</li>
+    <li><strong>Describe.</strong> Added title, journal, year and DOI from PubMed and the study population from the System API. Country comes from the study population or title, never from author affiliations.</li>
+    <li><strong>Check.</strong> For the trials shown in the first two sections, every number was compared with the paper. We record the graph’s original label, the corrected label and why it changed.</li>
+    <li><strong>Show, don’t pool.</strong> Results are shown with their own effect measure (OR, HR, IRR, rate ratio) and comparator. Different outcomes and measures sit in separate panels. We do not compute pooled effects or vote by statistical significance.</li>
+  </ol>
+  <p><strong>Limits.</strong> The graph covers open-access papers only. Keyword discovery can miss studies. Rows in the evidence index are unreviewed extractions. A significant result in one country and a non-significant one in another is not evidence that the countries differ.</p>
+  <p class="fine">Data: System Public Graph (System, Inc.), CC BY-NC 4.0 · WHO Global Health Observatory · PubMed. Code: MIT.</p>
+</section>
+</main>
+
+<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Source details">
+  <button class="drawer-close" type="button" aria-label="Close source details">Close</button>
+  <div id="drawer-body"></div>
+</aside>
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
