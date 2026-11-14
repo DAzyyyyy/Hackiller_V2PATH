@@ -7,7 +7,7 @@ Each agent edits **only its own row** and its own lines under *Requests* and *Lo
 | Agent | Branch | Current task | Status | Last commit | Blockers | Updated (ET) |
 |---|---|---|---|---|---|---|
 | AI-1 Evidence & Integration (Claude Code) | `evidence-pipeline` | A1–A5, C2, I1 | starting | — | — | 11:30 |
-| AI-2 Context & Full text | `context-data` | B1–B5, C1, optional B6 | done: contracts and validation passed; ready for integration | pending delivery commit | 3 evidence-context corrections for AI-1 | 11:38 |
+| AI-2 Context & Full text | `context-data` | B1–B5, C1, optional B6 | done: contracts and validation passed; ready for integration | dd3b6b6 | 3 evidence-context corrections for AI-1 | 11:39 |
 
 ## Checkpoints (ET)
 
