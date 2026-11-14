@@ -33,7 +33,15 @@ def main():
     for r in load('who_context'):
         if r['indicator']=='MALARIA_IRS_COVERAGE':assert r['unit']=='people'
     map_rows=load('map_context')
-    assert len(map_rows)==2*3*26
+    expected=set()
+    for path in (ROOT/'data/raw/map').glob('*.json'):
+        import re
+        match=re.fullmatch(r'([A-Z]{3})_(.+)_mean_(\d+)',path.stem)
+        if not match:continue
+        country,metric,release=match.groups()
+        for coords,_ in jsonstat(json.loads(path.read_text())):
+            expected.add((country,int(coords['Year']),metric,release))
+    assert {(r['country_iso3'],r['year'],r['metric'],r['release']) for r in map_rows}==expected
     assert len({(r['country_iso3'],r['year'],r['metric'],r['release']) for r in map_rows})==len(map_rows)
     for r in map_rows:
         if r['value_raw']==0:assert r['value'] is None and 'zero_may_mean_missing' in r['flags']

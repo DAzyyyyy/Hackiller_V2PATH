@@ -8,13 +8,13 @@
     },
     {
       "path": "data/processed/map_context.csv",
-      "bytes": 54668,
-      "sha256": "13f1af19d3935d760fd6db53a4592bdaf36c970c404a351e1d9f9587e6d6686d"
+      "bytes": 136324,
+      "sha256": "2b24e705861b34981ea3a69616c3f71b2f23cbfa9a6168ad225209a2ac08527a"
     },
     {
       "path": "data/processed/map_context.json",
-      "bytes": 101645,
-      "sha256": "842a901f1fbd366115ce147ee931ffcbb8a6325113702fc7f33d8e43e98dca5d"
+      "bytes": 253969,
+      "sha256": "ef5df846859286a57bdeb32ea4a31cfd30f0c76061fabd73bccc531cd45434f8"
     },
     {
       "path": "data/processed/pf8_country_year_resistance.csv",
@@ -39,7 +39,7 @@
     {
       "path": "data/processed/pf8_marker_calls.csv.gz",
       "bytes": 3079033,
-      "sha256": "6c658518856adcfb72fe1f5498fba550764bbd83cb4d6695accd46c678a6bd84"
+      "sha256": "2671e95f710d12e5d9833422585f340dd2f327be797037f25b44f4e88b98aa99"
     },
     {
       "path": "data/processed/pf8_resistance_context.csv",
@@ -103,13 +103,13 @@
     },
     {
       "path": "data/processed/who_context.csv",
-      "bytes": 24285,
-      "sha256": "14f88d455f7bfa8e411b0d6333a75d89dfc6c670a337d8ce3e84aa164acc0f41"
+      "bytes": 61499,
+      "sha256": "10c528d95c0aceaf8ea6b421af2ff9ddecdd92c5c3e7f26d830d568c8c3299b4"
     },
     {
       "path": "data/processed/who_context.json",
-      "bytes": 67450,
-      "sha256": "ffe70c7886cb8c8f2693904299560125b997bdb16c96c4fa0089a64ed39f4537"
+      "bytes": 165950,
+      "sha256": "f396c20c46750bd2bc316f3e9321805afee8faa6f1f84d2257d9c49bffdec8c6"
     }
   ]
 }

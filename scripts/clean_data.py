@@ -241,7 +241,7 @@ def clean_map():
                      'population':'children_age_2_10' if metric=='Pf_PR-rate' else 'all_ages',
                      'estimate_type':'modelled','source_files':source_files[(country,year,metric,version)],'flags':flags})
     save('map_context',rows)
-    QA['map']={'output_rows':len(rows),'release':'202608','flags':dict(Counter(f for r in rows for f in r['flags'])),'years':[min(r['year'] for r in rows),max(r['year'] for r in rows)]}
+    QA['map']={'output_rows':len(rows),'release':'202608','countries':sorted({r['country_iso3'] for r in rows}),'flags':dict(Counter(f for r in rows for f in r['flags'])),'years':[min(r['year'] for r in rows),max(r['year'] for r in rows)]}
 
 def unique_index(rows,key):
     result={}
