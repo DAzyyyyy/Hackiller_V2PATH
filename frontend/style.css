@@ -3,3 +3,11 @@
 
 /* Three primary navigation tabs and a country chooser. */
 .rail .primary-tab{height:48px;flex-shrink:0;flex-direction:column;gap:3px;font-size:22px}.rail-tab-label{font:500 5px 'DM Sans',sans-serif;letter-spacing:.4px;color:#aabbb6}.primary-tab.active .rail-tab-label{color:#e6c59e}.country-nav-menu{position:fixed;z-index:7;left:90px;top:175px;width:256px;background:#fff;border:1px solid #dfe6d7;border-radius:9px;padding:20px;box-shadow:0 10px 45px #19313c25}.country-nav-menu h2{font-size:17px;margin:9px 0 15px}.country-nav-menu .eyebrow{font-size:7px}.country-nav-menu a{display:flex;align-items:center;gap:9px;text-decoration:none;font-size:11px;color:#627f51;padding:11px 9px;border-radius:5px}.country-nav-menu a:hover,.country-nav-menu a[aria-current="page"]{background:#eef3e8}.country-nav-menu a>span:last-child{margin-left:auto;color:#a1b094}.country-nav-menu .country-menu-note{font-size:8px;color:#a0ad92;border-top:1px solid #eaf0e1;padding-top:13px;margin:10px 0 0}.country-nav-menu #country-nav-links>p{font-size:10px;color:#9aa98d}@media(max-width:740px){.rail .primary-tab{height:43px;font-size:21px}.rail-tab-label{font-size:5px}.country-nav-menu{left:63px;top:147px;width:min(255px,calc(100vw - 76px));padding:16px}}
+
+/* Final ice-blue / silver logo with mosquito surface inlay. */
+.rail .brand{display:grid;place-items:center;width:64px;height:64px;flex-shrink:0;margin-bottom:24px;perspective:600px}
+.brand-logo{display:block;width:56px;height:56px;object-fit:contain;animation:atlas-logo-float 8s ease-in-out infinite;filter:drop-shadow(0 4px 7px #061a2933)}
+.pb-brand{display:inline-flex;align-items:center;gap:10px}.pb-brand .brand-logo{width:48px;height:48px}
+@keyframes atlas-logo-float{0%,100%{transform:translateY(1px) rotateY(-7deg) rotateZ(-2deg)}50%{transform:translateY(-3px) rotateY(7deg) rotateZ(2deg)}}
+@media(max-width:740px){.rail .brand{width:46px;height:49px;margin-bottom:15px}.rail .brand-logo{width:44px;height:44px}}
+@media(prefers-reduced-motion:reduce){.brand-logo{animation:none}}

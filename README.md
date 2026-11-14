@@ -1,8 +1,39 @@
-# PATH malaria visualization — research data
+# Malaria Atlas — What Works Where
 
-First-pass processed tables are now in `data/processed/`. Run `python3 scripts/clean_data.py` and `python3 scripts/validate_processed.py`. The Chinese summary is `reports/cleaning_report_zh.md`; methods and table definitions are in `data/processed/README.md`. Paper linking and original-source verification remain pending.
+An interactive malaria-prevention evidence atlas built for the PATH Visualize challenge using System Public Graph, paper-checked research, WHO, Malaria Atlas Project and MalariaGEN Pf8 data.
 
-Raw inputs downloaded/prepared on 2026-11-14. **Files in `data/raw/` remain unchanged.** WHO/MAP requests select geography and indicators at the source; their responses are saved unchanged. Processed outputs are separate. Sources and scope are below.
+## Open the website
+
+The runnable website is in **[`frontend/`](frontend/)**. Serve the repository over HTTP; opening the HTML with `file://` will not reliably load its JSON data.
+
+```sh
+git clone https://github.com/DAzyyyyy/Hackiller_V2PATH.git
+cd Hackiller_V2PATH
+python3 -m http.server 8000
+```
+
+Open **[http://localhost:8000/frontend/](http://localhost:8000/frontend/)**.
+
+- [World map](http://localhost:8000/frontend/): five core countries — Benin, Burkina Faso, Mali, Nigeria and Tanzania.
+- [Country timeline](http://localhost:8000/frontend/country.html?country=TZA): explore 2006–2025, WHO/MAP trends, ITN use and research evidence.
+- [Budget Planner](http://localhost:8000/frontend/forecast.html): compare user-defined programme costs, coverage and completion assumptions; export a scenario.
+- [Evidence Playbook](http://localhost:8000/frontend/playbook.html): explore illustrative setting-specific evidence summaries.
+
+**Hosted URL:** no verified public deployment URL is recorded yet. The default GitHub Pages address returned HTTP 404 when checked on 14 Nov 2026. The local links above work after starting the server. To publish with GitHub Pages, use a branch deployment from the repository root and visit `/Hackiller_V2PATH/frontend/`, or deploy `frontend/` as a static-site root on your host.
+
+## Frontend and data
+
+The frontend uses HTML, CSS, JavaScript and bundled D3.js; no Node build or API key is required. The final ice-blue glass / silver titanium logo with a mosquito surface inlay is used on all four pages and as the favicon. Its floating animation respects reduced-motion preferences.
+
+`frontend/data/frontend-data.json` is the bundled schema 1.0.1 snapshot. It contains 20 paper-anchor results and 33 abstract-reviewed records, alongside 721 WHO/MAP country-year records and Pf8 sampled-case context. The UI distinguishes evidence verification levels and effect measures. MAP incidence values are already normalized to cases per 1,000 people per year; do not multiply them again. See [frontend handoff](reports/FRONTEND_HANDOFF.md) for definitions and interpretation rules.
+
+The Budget Planner uses editable assumptions and proportional allocation when funding is insufficient. It does not optimize interventions or predict cases averted. National modeled context does not establish trial causality; parasite drug-resistance markers do not measure mosquito insecticide resistance.
+
+## Data processing and original collection
+
+Run `python3 scripts/clean_data.py` and `python3 scripts/validate_processed.py` to reproduce the first-pass processed tables in `data/processed/`. The Chinese summary is [reports/cleaning_report_zh.md](reports/cleaning_report_zh.md); table definitions are in [data/processed/README.md](data/processed/README.md). The original collection notes below describe the initial download; current paper checks and frontend outputs are documented in the handoff above.
+
+Raw inputs downloaded/prepared on 2026-11-14. Files in `data/raw/` remain unchanged. WHO/MAP requests select geography and indicators at source; their responses are saved unchanged. Processed outputs are separate.
 
 ## Contents
 
@@ -35,7 +66,7 @@ The script restores to `data/restored/system/` and verifies each CSV against the
 
 - This is an input collection, **not a validated analytical dataset**. Raw graph errors and missing values are retained.
 - Pf8 describes parasite drug-resistance markers; it does not measure mosquito insecticide resistance or directly estimate SMC protection.
-- WHO/MAP data currently cover two demo countries. They do not cover all SMC/vaccine study countries.
+- The original WHO/MAP download described below began with two demo countries. The current frontend bundle includes five core showcase countries; evidence and context coverage differ by country.
 - Core metadata PMIDs: 35339225, 37776879, 36706778, 38401551, 38310910, 34432975, 33278936, 34894221, 27875528, 36704118, 30398672.
 - DHS, complete genome sequences, rasters and the System relationships table are not downloaded; they are optional for the agreed first cleaning stage.
 - AI assistance: OpenAI Codex was used to locate/download sources, package raw files and write provenance documentation.
