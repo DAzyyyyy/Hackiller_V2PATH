@@ -15,7 +15,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 import requests
 
-from common import INTERIM, SystemAPI, log_request, write_json
+from common import INTERIM, ISO3, STUDIES_CSV, log_request, write_json
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
 
@@ -31,6 +31,8 @@ COUNTRIES = [
 ]
 ALIASES = {"DRC": "Democratic Republic of the Congo", "Cote d'Ivoire": "Côte d'Ivoire",
            "Ivory Coast": "Côte d'Ivoire"}
+REGION_NOTES = {"Sahel", "sub-Saharan Africa"}
+
 CRX = re.compile(r"\b(" + "|".join(re.escape(c) for c in sorted(COUNTRIES, key=len, reverse=True)) + r")\b", re.I)
 
 
@@ -72,38 +74,48 @@ def pubmed_meta(pmids: list[str]) -> dict:
     return out
 
 
-def system_study(api: SystemAPI, pmid: str) -> dict:
-    try:
-        rows = api.get("/v1/studies", {"filter": f"pubmed_id:{pmid}", "limit": 5}).get("data", [])
-    except Exception as exc:  # noqa: BLE001 - record and continue
-        return {"system_status": f"error: {exc.__class__.__name__}"}
-    if not rows:
-        return {"system_status": "no study record"}
-    s = rows[0]
-    return {"system_status": "ok", "system_study_id": s.get("system_id") or s.get("study_id"),
-            "population": s.get("population"), "study_type": s.get("study_type"),
-            "system_doi": s.get("doi")}
+def offline_studies(study_ids: set[str]) -> dict:
+    """Study records from the restored System studies table (no API calls)."""
+    out = {}
+    for chunk in pd.read_csv(STUDIES_CSV, dtype=str, keep_default_na=False, chunksize=200_000):
+        sub = chunk[chunk.study_id.isin(study_ids)]
+        for r in sub.itertuples(index=False):
+            out[r.study_id] = {"system_study_id": r.study_id, "population": r.population_string or None,
+                               "study_type": r.study_type or None, "system_doi": r.doi or None,
+                               "study_pmid": r.pubmed_id or None}
+    return out
 
 
 def main() -> None:
     cand = pd.read_csv(INTERIM / "candidates.csv", dtype=str, keep_default_na=False)
     pmids = sorted(set(cand["pubmed_id"]) - {""})
     meta = pubmed_meta(pmids)
-    api = SystemAPI(sleep_s=0.0)
-    with ThreadPoolExecutor(max_workers=6) as ex:
-        studies = dict(zip(pmids, ex.map(lambda p: system_study(api, p), pmids)))
+    pmid_study = cand.drop_duplicates("pubmed_id").set_index("pubmed_id")["study_id"].to_dict()
+    studies = offline_studies(set(pmid_study.values()))
     papers = []
     for p in pmids:
-        rec = {"pubmed_id": p, **meta.get(p, {}), **studies.get(p, {})}
+        st = studies.get(pmid_study.get(p))
+        flags = []
+        if st is None:
+            st = {"system_status": "study_lookup_missing"}
+            flags.append("study_lookup_missing")
+        else:
+            st = {**st, "system_status": "ok"}
+            if st.get("study_pmid") and st["study_pmid"] != p:
+                flags.append("study_pmid_mismatch")
+        rec = {"pubmed_id": p, **meta.get(p, {}), **st, "study_flags": flags}
         pop_c = countries_in(rec.get("population") or "")
         title_c = countries_in(rec.get("title") or "")
         rec["countries"] = pop_c or title_c
         rec["country_source"] = "population" if pop_c else ("title" if title_c else "unknown")
+        rec["iso3"] = ";".join(ISO3[c] for c in rec["countries"] if c in ISO3)
+        rec["region_notes"] = ";".join(c for c in rec["countries"] if c in REGION_NOTES)
         papers.append(rec)
     write_json(INTERIM / "papers.json", papers)
     df = pd.DataFrame(papers)
     print("papers:", len(df), "| pubmed ok:", (df.pubmed_status == "ok").sum(),
-          "| system study ok:", (df.system_status == "ok").sum(),
+          "| offline study ok:", (df.system_status == "ok").sum(),
+          "| study flags:", df.study_flags.explode().value_counts().to_dict(),
           "| country known:", (df.country_source != "unknown").sum())
     print(df.country_source.value_counts().to_dict())
 

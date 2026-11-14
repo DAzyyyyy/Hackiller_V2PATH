@@ -11,7 +11,7 @@ import json
 import pandas as pd
 import requests
 
-from common import GRAPH, INTERIM, SITE_DATA, VERIFIED, log_request, write_json
+from common import GRAPH, INTERIM, SITE_DATA, VERIFIED, log_request, to_iso3, write_json
 
 WHO = "https://ghoapi.azureedge.net/api/"
 WHO_INDICATORS = {
@@ -43,6 +43,7 @@ def who_context() -> list[dict]:
 
 def main() -> None:
     ver = pd.read_csv(VERIFIED / "evidence_verified.csv", dtype=str, keep_default_na=False)
+    ver["iso3"] = ver["country"].map(to_iso3)
     for c in ("estimate", "ci_lower", "ci_upper", "followup_months", "publication_year"):
         ver[c] = pd.to_numeric(ver[c], errors="coerce")
     write_json(SITE_DATA / "verified.json", json.loads(ver.to_json(orient="records")))
@@ -60,7 +61,8 @@ def main() -> None:
                  "statistic_value", "ci_lower", "ci_upper", "ci_level", "p_value", "p_value_equality",
                  "variable_1_name", "variable_2_name", "intervention_class", "intervention_subtype",
                  "intervention_text", "outcome_text", "role", "outcome_tier", "stat_family",
-                 "plottable_ratio", "direction", "ci_excludes_null", "qc_flags"]
+                 "plottable_ratio", "direction", "ci_excludes_null", "qc_flags", "teammate_flags",
+                 "match_rule"]
     g = cand[keep_cols].copy()
     for c in ("statistic_value", "ci_lower", "ci_upper", "ci_level", "p_value"):
         g[c] = pd.to_numeric(g[c], errors="coerce")
@@ -72,7 +74,9 @@ def main() -> None:
         r.update({
             "title": p.get("title"), "journal": p.get("journal"), "year": p.get("year"),
             "doi": p.get("doi") or p.get("system_doi"), "countries": p.get("countries", []),
-            "country_source": p.get("country_source"), "population": p.get("population"),
+            "country_source": p.get("country_source"), "iso3": p.get("iso3", ""),
+            "region_notes": p.get("region_notes", ""), "study_flags": p.get("study_flags", []),
+            "population": p.get("population"),
             "study_type": p.get("study_type"), "in_verified_set": r["pubmed_id"] in verified_pmids,
         })
     write_json(SITE_DATA / "graph.json", recs)

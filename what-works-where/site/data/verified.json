@@ -29,7 +29,8 @@
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
   "verification_note": "API row had no net type; arm restored from paper (25.6% vs 45.8%)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA"
  },
  {
   "result_id": "TZ24-PBO",
@@ -61,7 +62,8 @@
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
   "verification_note": "API row had no net type; arm restored from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA"
  },
  {
   "result_id": "TZ24-PPF",
@@ -93,7 +95,8 @@
   "graph_original_label": "use of study LLINs",
   "verification_status": "checked against paper",
   "verification_note": "API row had no net type; arm restored from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/35339225/",
+  "iso3": "TZA"
  },
  {
   "result_id": "TZ36-CFP",
@@ -125,7 +128,8 @@
   "graph_original_label": "standard pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'standard pyrethroid'; paper: chlorfenapyr-pyrethroid (22.8% vs 37.4%)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA"
  },
  {
   "result_id": "TZ36-PPF",
@@ -157,7 +161,8 @@
   "graph_original_label": "PBO-pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'PBO-pyrethroid'; paper: pyriproxyfen-pyrethroid",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA"
  },
  {
   "result_id": "TZ36-PBO",
@@ -189,7 +194,8 @@
   "graph_original_label": "chlorfenapyr-pyrethroid net",
   "verification_status": "label corrected",
   "verification_note": "API labelled this arm 'chlorfenapyr-pyrethroid'; paper: PBO-pyrethroid",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/37776879/",
+  "iso3": "TZA"
  },
  {
   "result_id": "BJ24-CFP",
@@ -221,7 +227,8 @@
   "graph_original_label": "chlorfenapyr-pyrethroid net",
   "verification_status": "checked against paper",
   "verification_note": "API + CSV + paper agree. 0.56 vs 1.03 cases per child-year; paper reports p<0.0001 (API stores 0.0001)",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/",
+  "iso3": "BEN"
  },
  {
   "result_id": "BJ24-PPF",
@@ -253,7 +260,8 @@
   "graph_original_label": "",
   "verification_status": "checked against paper",
   "verification_note": "interval compatible with benefit and with no difference",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36706778/",
+  "iso3": "BEN"
  },
  {
   "result_id": "BJ36-CFP",
@@ -285,7 +293,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "graph has the study but no associations; value from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/",
+  "iso3": "BEN"
  },
  {
   "result_id": "BJ36-PPF",
@@ -317,7 +326,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "graph has the study but no associations; value from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38401551/",
+  "iso3": "BEN"
  },
  {
   "result_id": "COCH-ITN-MORT",
@@ -349,7 +359,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "systematic review (5 trials) - shown as a summary marker; pools older trials",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/",
+  "iso3": ""
  },
  {
   "result_id": "COCH-ITN-CLIN",
@@ -381,7 +392,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "systematic review (5 trials) - shown as a summary marker",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/30398672/",
+  "iso3": ""
  },
  {
   "result_id": "R21-SEAS",
@@ -413,7 +425,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "VE 75% (71-79) reported; HR = 1 - VE",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/",
+  "iso3": "BFA;KEN;MLI;TZA"
  },
  {
   "result_id": "R21-STD",
@@ -445,7 +458,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "VE 68% (61-74) reported; HR = 1 - VE",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/38310910/",
+  "iso3": "BFA;KEN;MLI;TZA"
  },
  {
   "result_id": "RTSS-SMC-COMBO",
@@ -477,7 +491,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "PE 62.8% (58.4-66.8) of combination vs SMC alone; underlying ratio per paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/",
+  "iso3": "BFA;MLI"
  },
  {
   "result_id": "RTSS-vs-SMC",
@@ -509,7 +524,8 @@
   "graph_original_label": "",
   "verification_status": "comparator restored",
   "verification_note": "non-inferiority comparison (margin 1.20); comparator is SMC not placebo",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/34432975/",
+  "iso3": "BFA;MLI"
  },
  {
   "result_id": "ACCESS-SMC-CC",
@@ -541,7 +557,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "PE 88.2% (78.7-93.4); individual-level protection in the 28 days after a dose",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "BFA;TCD;GIN;MLI;NER;NGA;GMB"
  },
  {
   "result_id": "ACCESS-SMC-NG",
@@ -573,7 +590,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "reduction 25.5% (6.1-40.9); population-level impact",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "NGA"
  },
  {
   "result_id": "ACCESS-SMC-GM",
@@ -605,7 +623,8 @@
   "graph_original_label": "",
   "verification_status": "paper supplement",
   "verification_note": "reduction 55.2% (42.0-65.3); population-level impact",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/33278936/",
+  "iso3": "GMB"
  },
  {
   "result_id": "MALI-SMC5",
@@ -637,6 +656,7 @@
   "graph_original_label": "",
   "verification_status": "time point restored",
   "verification_note": "API also returns IRR 0.66 for the November (round 4) comparison; month taken from paper",
-  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36704118/"
+  "source_url": "https://pubmed.ncbi.nlm.nih.gov/36704118/",
+  "iso3": "MLI"
  }
 ]

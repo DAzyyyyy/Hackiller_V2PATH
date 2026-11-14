@@ -1,17 +1,17 @@
 {
  "summary": {
   "snapshot_rows": 1999877,
-  "candidate_associations": 416,
-  "candidate_papers": 239,
-  "effect_associations": 333,
-  "effect_papers": 208,
-  "plottable_ratio_associations": 327,
-  "flagged_associations": 105,
+  "candidate_associations": 481,
+  "candidate_papers": 273,
+  "effect_associations": 379,
+  "effect_papers": 230,
+  "plottable_ratio_associations": 375,
+  "flagged_associations": 123,
   "verified_results": 20,
   "verified_trials": 7,
   "verified_papers": 9,
-  "graph_rows_abstract_checked": 20,
-  "graph_rows_needing_context": 11,
+  "graph_rows_abstract_checked": 33,
+  "graph_rows_needing_context": 19,
   "label_corrections": 8
  },
  "malaria_neighbourhood": [

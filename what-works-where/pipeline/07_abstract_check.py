@@ -18,6 +18,8 @@ from common import DATA, log_request
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest/search"
 Q = DATA / "review" / "review_queue.csv"
 ABS = DATA / "review" / "abstracts.json"
+# priority-3 papers pulled in for C2 (ITN -> under-5 / child mortality)
+EXTRA_PMIDS = {"17889242", "34051817", "28990922", "27146674", "24052575", "29402245"}
 
 
 def fetch_abstracts(pmids: list[str]) -> dict[str, dict]:
@@ -58,6 +60,7 @@ def main() -> None:
     q = pd.read_csv(Q, dtype=str, keep_default_na=False)
     raw = pd.read_csv(DATA / "interim" / "candidates.csv", dtype=str, keep_default_na=False)
     raw = raw.set_index("system_id")[["statistic_value", "ci_lower", "ci_upper"]]
+    q.loc[q.pubmed_id.isin(EXTRA_PMIDS) & (q.review_priority == "3"), "review_priority"] = "2"
     target = q[q.review_priority.isin(["1", "2"])]
     pmids = sorted(set(target.pubmed_id))
     abstracts = fetch_abstracts(pmids)

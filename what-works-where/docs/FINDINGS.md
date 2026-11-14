@@ -9,11 +9,11 @@ Working notes for the team and the pitch. Every number below comes from files in
 | Step | Count | Unit |
 |---|---:|---|
 | Associations in the fixed graph snapshot (Dataverse v2.1) | 1,999,877 | associations |
-| Papers in the snapshot that mention malaria / Plasmodium / Anopheles / mosquito | 2,277 | papers |
-| Candidates naming a net, SMC or a malaria vaccine inside those papers | 416 | associations, from 239 papers |
+| Papers in the snapshot with malaria context (malaria, Plasmodium, Anopheles, mosquito, parasite, ITN, LLIN) | 2,745 | papers |
+| Candidates naming a net, SMC or a malaria vaccine (our rule ∪ teammate's rule; all 331 teammate ids included) | 481 | associations, from 273 papers |
 | …that are intervention effects or use-as-exposure (not uptake/behaviour) | 333 | associations, from 208 papers |
 | Graph rows pre-checked against the abstract (priority 1–2) | 142 | associations; 125 have the value and CI in the abstract |
-| Graph rows reviewed by hand against the abstract | 20 | associations; 11 needed context restored or a correction |
+| Graph rows reviewed by hand against the abstract | 33 | associations; 19 needed context restored or a correction |
 | Paper-verified anchor results (nets, SMC, vaccines) | 20 | results, from 7 trials and 9 papers |
 
 Candidates by intervention: nets 212 papers, SMC 14, vaccines 12, RTS,S + SMC combination 1.
@@ -120,11 +120,18 @@ We built a verification layer, not a critique. System's own documentation estima
 | RTS,S/AS02 over time | Effect strongest in the first 3 months (HR 0.62) and weakens | Kenya re-analysis, 32536547 |
 | RTS,S by parasite genotype | VE 62.7% vs parasites matching the vaccine, 54.2% vs mismatched | 26488565, after correcting the graph's "HR 62.7" |
 
+### Nets beyond the two dual-AI trials (added 11:50, abstract-checked)
+- Uganda LLINEUP (cRCT, 48 districts): PBO vs conventional LLINs, parasite prevalence PR **0.80 (0.69–0.93)** at 25 months; within the PBO arm prevalence fell 28.8% → 12.0% by 6 months (PR 0.43). Graph row had lost the non-PBO comparator.
+- ITN → child mortality: Kenya cRCT infants HR **0.78 (0.67–0.90)**; Kenya longitudinal 1–59 mo rate ratio **0.56 (0.33–0.96)**; Malawi ownership HR **0.75 (0.62–0.90)**; Congo ownership RR **0.76 (0.64–0.90)**; Tanzania HDSS per +10% village ownership IRR 0.946 (Rufiji) / 0.899 (Ifakara).
+- Over time: Burkina Faso birth cohort, ITN from birth vs from 6 months, mortality rate ratio **1.05 (0.89–1.24)** after a median 8.3 years, i.e. no late rebound.
+- Setting / age: Cambodia cRCT, the effect on prevalence was larger in under-5s (OR 0.63) than older ages (interaction p=0.042).
+- Two graph labels corrected: "malaria transmission and child mortality" was actually Anopheles per house (RR 0.23); "malaria morbidity and mortality" was clinical P. falciparum incidence.
+
 ## 6. Lines for the pitch
 
 - "The graph almost always has the right number. What it loses is what the number compares."
 - "Malaria prevention evidence depends on the comparison, the setting and the follow-up period."
-- "Of 20 graph findings we checked against the paper, 11 needed their comparator, time point or label restored before they could be shown."
+- "Of 33 graph findings we checked against the source, 19 needed their comparator, time point or label restored before they could be shown."
 - "SMC's protection lives in the 28 days after a dose: hospitalisation IRR 0.13 vs children dosed more than 35 days earlier."
 - "In the graph, the most-studied factors around malaria are bed nets, rain and temperature: prevention and climate in the same network."
 

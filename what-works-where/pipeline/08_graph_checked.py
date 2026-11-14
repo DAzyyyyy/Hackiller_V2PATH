@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from common import DATA, VERIFIED
+from common import DATA, VERIFIED, to_iso3
 
 Q = pd.read_csv(DATA / "review" / "review_queue.csv", dtype=str, keep_default_na=False)
 
@@ -160,6 +160,102 @@ REVIEW = {
         outcome_definition="clinical malaria", effect_measure="hazard ratio", followup_label="", followup_months="",
         verification_status="excluded: not an intervention effect",
         verification_note="immune correlate within vaccinees, stored as if it were a vaccine effect"),
+
+    # ---- C2 (11:50 ET): nets rows recovered by the teammate's rule + ITN -> child mortality ----
+    ("36174592", "0.8"): dict(
+        trial_family_id="llineup-uganda", intervention_class="nets",
+        intervention="PBO LLINs (PermaNet 3.0 / Olyset Plus)", comparator="conventional LLINs (PermaNet 2.0 / Olyset Net)",
+        country="UGA", site="48 districts, eastern and western Uganda", population="residents (cross-sectional surveys)",
+        outcome_tier="infection", outcome_definition="parasite prevalence, adjusted for baseline",
+        effect_measure="prevalence ratio", followup_label="25 months after distribution", followup_months="25",
+        verification_status="comparator restored",
+        verification_note="graph row reads 'PBO LLINs -> parasite prevalence' without the non-PBO comparator; "
+                          "17.1% vs 19.8%. Cluster-randomised (LLINEUP)"),
+    ("36174592", "0.43"): dict(
+        trial_family_id="llineup-uganda", intervention_class="nets", intervention="PBO LLINs, 6 months after distribution",
+        comparator="same PBO arm at baseline", country="UGA", site="48 districts, eastern and western Uganda",
+        population="residents (cross-sectional surveys)", outcome_tier="infection",
+        outcome_definition="parasite prevalence (28.8% -> 12.0%)", effect_measure="prevalence ratio",
+        followup_label="6 months after distribution", followup_months="6", verification_status="comparator restored",
+        verification_note="within-arm before-after change, not PBO vs non-PBO; largest at 6 months, "
+                          "PBO advantage persisted to 25 months"),
+    ("17889242", "0.56"): dict(
+        trial_family_id="kenya-itn-child-survival-2007", intervention_class="nets", intervention="ITN use",
+        comparator="no ITN use", country="KEN", site="rural Kenya", population="children 1-59 mo",
+        outcome_tier="mortality", outcome_definition="all-cause mortality", effect_measure="mortality rate ratio (adjusted)",
+        followup_label="longitudinal follow-up during ITN scale-up", followup_months="",
+        verification_status="checked against abstract",
+        verification_note="observational longitudinal study; adjusted for age, period and confounders"),
+    ("34051817", "0.76"): dict(
+        trial_family_id="congo-itn-u5-mortality", intervention_class="nets",
+        intervention="household owns at least one ITN", comparator="household owns no ITN", country="COG",
+        site="national survey data", population="children under 5", outcome_tier="mortality",
+        outcome_definition="all-cause under-5 mortality (Cox regression)", effect_measure="risk ratio",
+        followup_label="", followup_months="", verification_status="checked against abstract",
+        verification_note="observational; ownership, not use"),
+    ("28990922", "0.75"): dict(
+        trial_family_id="malawi-itn-ownership-2006-2010", intervention_class="nets",
+        intervention="household owns an ITN", comparator="household owns no ITN", country="MWI",
+        site="national household survey 2006-2010", population="children 1-59 mo", outcome_tier="mortality",
+        outcome_definition="all-cause child mortality (Cox)", effect_measure="hazard ratio",
+        followup_label="", followup_months="", verification_status="checked against abstract",
+        verification_note="observational; abstract prints the CI as '0.62-90' (typo for 0.90)"),
+    ("27146674", "0.946"): dict(
+        trial_family_id="tanzania-hdss-net-ownership", intervention_class="nets",
+        intervention="+10% village-level household net ownership", comparator="per 10-percentage-point lower ownership",
+        country="TZA", site="Rufiji HDSS", population="children under 5", outcome_tier="mortality",
+        outcome_definition="malaria deaths (space-time model)", effect_measure="incidence rate ratio",
+        followup_label="", followup_months="", verification_status="comparator restored",
+        verification_note="ratio is per 10% increase in village ownership, not ITN vs no ITN"),
+    ("27146674", "0.899"): dict(
+        trial_family_id="tanzania-hdss-net-ownership", intervention_class="nets",
+        intervention="+10% village-level household net ownership", comparator="per 10-percentage-point lower ownership",
+        country="TZA", site="Ifakara HDSS", population="children under 5", outcome_tier="mortality",
+        outcome_definition="malaria deaths (space-time model)", effect_measure="incidence rate ratio",
+        followup_label="", followup_months="", verification_status="comparator restored",
+        verification_note="same model as Rufiji; site restored (Ifakara)"),
+    ("15173148", "0.78"): dict(
+        trial_family_id="asembo-kenya-itn-crt", intervention_class="nets", intervention="insecticide-treated bednets",
+        comparator="control villages", country="KEN", site="western Kenya (intense perennial transmission)",
+        population="infants 1-11 mo", outcome_tier="mortality", outcome_definition="all-cause infant mortality",
+        effect_measure="hazard ratio", followup_label="phase 1 (Jan 1997 - Feb 2000)", followup_months="36",
+        verification_status="time point restored",
+        verification_note="community-randomised trial; low rates maintained in phase 2 surveillance"),
+    ("15173148", "0.23"): dict(
+        trial_family_id="asembo-kenya-itn-crt", intervention_class="nets", intervention="3-4 years of bednet use (study area)",
+        comparator="neighbouring area without bednets", country="KEN", site="western Kenya",
+        population="houses", outcome_tier="vector / entomological",
+        outcome_definition="Anopheles mosquitoes per house", effect_measure="risk ratio",
+        followup_label="after 3-4 years", followup_months="42", verification_status="label corrected",
+        verification_note="graph outcome reads 'malaria transmission and child morbidity and mortality'; "
+                          "the number is mosquito density per house"),
+    ("22519853", "1.05"): dict(
+        trial_family_id="nouna-itn-birth-cohort", intervention_class="nets", intervention="ITN protection from birth",
+        comparator="ITN protection from age 6 months", country="BFA", site="Nouna, north-western Burkina Faso",
+        population="birth cohort (n=3387)", outcome_tier="mortality", outcome_definition="all-cause mortality",
+        effect_measure="rate ratio", followup_label="median 8.3 years", followup_months="100",
+        verification_status="comparator restored",
+        verification_note="individually randomised; no late mortality rebound from early protection"),
+    ("16903880", "0.72"): dict(
+        trial_family_id="rattanakiri-itn-crt", intervention_class="nets", intervention="deltamethrin-treated bednets",
+        comparator="no net provision", country="KHM", site="Rattanakiri, north-east Cambodia", population="villages",
+        outcome_tier="clinical malaria", outcome_definition="incidence of clinical P. falciparum (passive surveillance)",
+        effect_measure="adjusted rate ratio", followup_label="10 months", followup_months="10",
+        verification_status="label corrected",
+        verification_note="graph outcome reads 'malaria morbidity and mortality'; paper: clinical P. falciparum incidence"),
+    ("16903880", "0.63"): dict(
+        trial_family_id="rattanakiri-itn-crt", intervention_class="nets", intervention="deltamethrin-treated bednets",
+        comparator="no net provision", country="KHM", site="Rattanakiri, north-east Cambodia",
+        population="children under 5", outcome_tier="infection", outcome_definition="P. falciparum prevalence",
+        effect_measure="adjusted odds ratio", followup_label="10 months", followup_months="10",
+        verification_status="checked against abstract",
+        verification_note="greater reduction in under-5s than older ages (interaction p=0.042): age modifies the effect"),
+    ("24052575", "0.07"): dict(
+        trial_family_id="kassala-perinatal", intervention_class="nets", intervention="use of a mosquito net",
+        comparator="no mosquito net", country="SDN", site="Kassala, eastern Sudan", population="births 2010-2011",
+        outcome_tier="mortality", outcome_definition="perinatal death", effect_measure="odds ratio",
+        followup_label="", followup_months="", verification_status="checked against abstract",
+        verification_note="observational risk-factor analysis; implausibly strong association, likely confounded"),
 }
 
 
@@ -174,7 +270,7 @@ def main() -> None:
         rows.append({
             "result_id": f"G-{pmid}-{val}", "trial_family_id": ann["trial_family_id"], "pmid": pmid,
             "short_ref": f"{(r.title or '')[:60]}… ({r.year})", "intervention_class": ann["intervention_class"],
-            "intervention": ann["intervention"], "comparator": ann["comparator"], "country": ann["country"],
+            "intervention": ann["intervention"], "comparator": ann["comparator"], "country": ann["country"], "iso3": to_iso3(ann["country"]),
             "site": ann["site"], "population": ann["population"], "outcome_tier": ann["outcome_tier"],
             "outcome_definition": ann["outcome_definition"], "effect_measure": ann["effect_measure"],
             "estimate": ann.get("estimate", r.statistic_value), "ci_lower": ann.get("ci_lower", r.ci_lower),
