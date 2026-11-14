@@ -78,23 +78,33 @@
     }
   },
   "who": {
-    "output_rows": 137,
+    "output_rows": 331,
     "exact_duplicates_removed": 0,
     "by_indicator": {
-      "MALARIA_EST_INCIDENCE": 50,
-      "MALARIA_IRS_COVERAGE": 17,
-      "MALARIA_ITN_COVERAGE": 20,
-      "MALARIA_ITN_USE": 50
+      "MALARIA_EST_INCIDENCE": 125,
+      "MALARIA_IRS_COVERAGE": 31,
+      "MALARIA_ITN_COVERAGE": 50,
+      "MALARIA_ITN_USE": 125
     },
     "flags": {},
     "countries": [
       "BEN",
+      "BFA",
+      "MLI",
+      "NGA",
       "TZA"
     ]
   },
   "map": {
-    "output_rows": 156,
+    "output_rows": 390,
     "release": "202608",
+    "countries": [
+      "BEN",
+      "BFA",
+      "MLI",
+      "NGA",
+      "TZA"
+    ],
     "flags": {},
     "years": [
       2000,
