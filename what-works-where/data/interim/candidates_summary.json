@@ -1,0 +1,31 @@
+{
+ "snapshot_rows": 1999877,
+ "malaria_context_pmids": 2277,
+ "candidates": 416,
+ "candidate_pmids": 239,
+ "by_class": {
+  "nets": 354,
+  "smc": 38,
+  "vaccines": 26
+ },
+ "pmids_by_class": {
+  "nets": 212,
+  "smc": 15,
+  "vaccines": 13
+ },
+ "with_both_ci": 341,
+ "statistic_types": {
+  "odds_ratio": 180,
+  "adjusted_odds_ratio": 90,
+  "relative_risk_ratio": 39,
+  "mean_difference_unstandardized": 38,
+  "incident_rate_ratio": 25,
+  "hazard_ratio": 15,
+  "prevalence_ratio": 10,
+  "risk_difference": 7,
+  "coefficient": 5,
+  "adjusted_hazard_ratio": 3,
+  "pearson_r": 3,
+  "mean_difference_standardized": 1
+ }
+}
