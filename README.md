@@ -19,11 +19,23 @@ Open **[http://localhost:8000/frontend/](http://localhost:8000/frontend/)**.
 - [Budget Planner](http://localhost:8000/frontend/forecast.html): compare user-defined programme costs, coverage and completion assumptions; export a scenario.
 - [Evidence Playbook](http://localhost:8000/frontend/playbook.html): explore illustrative setting-specific evidence summaries.
 
-**Hosted URL:** no verified public deployment URL is recorded yet. The default GitHub Pages address returned HTTP 404 when checked on 14 Nov 2026. The local links above work after starting the server. To publish with GitHub Pages, use a branch deployment from the repository root and visit `/Hackiller_V2PATH/frontend/`, or deploy `frontend/` as a static-site root on your host.
+## Publish a public website
+
+This project is a static site: deploy **only `frontend/`**, with no build command. A prepared [GitHub Pages workflow](.github/workflows/pages.yml) publishes that directory at the site root. It is manual until you choose to publish.
+
+1. Open repository **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+2. Open **Actions → Deploy frontend to Pages → Run workflow**, selecting `main`.
+3. Wait for the workflow to succeed, then use the deployment URL shown in its `github-pages` environment.
+
+Expected URL after successful deployment: **https://dazyyyyy.github.io/Hackiller_V2PATH/** (not `/frontend/`, because this workflow publishes the contents of `frontend/` at the site root). This is a deployment target, not a currently verified live URL.
+
+GitHub Pages is available for public repositories on GitHub Free, and private repositories on eligible paid plans. If Pages is unavailable for this repository, a static host can deploy `frontend/` instead; no repository visibility change is required for the code changes in this PR. See [GitHub's Pages workflow guide](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages).
+
+After deployment, the bundled JSON works without API keys; optional GitHub refresh falls back to the bundled snapshot if unavailable. Only frontend files enter the deployment artifact, not the repository's raw research inputs.
 
 ## Frontend and data
 
-The frontend uses HTML, CSS, JavaScript and bundled D3.js; no Node build or API key is required. The final ice-blue glass / silver titanium logo with a mosquito surface inlay is used on all four pages and as the favicon. Its floating animation respects reduced-motion preferences.
+The frontend uses HTML, CSS, JavaScript and bundled D3.js; no Node build or API key is required. A compact SVG mosquito mark matches the navy, sage and warm-gold palette on all four pages and the favicon. Subtle cursor-follow translation and tilt are disabled on touch devices and for reduced-motion preferences.
 
 `frontend/data/frontend-data.json` is the bundled schema 1.0.1 snapshot. It contains 20 paper-anchor results and 33 abstract-reviewed records, alongside 721 WHO/MAP country-year records and Pf8 sampled-case context. The UI distinguishes evidence verification levels and effect measures. MAP incidence values are already normalized to cases per 1,000 people per year; do not multiply them again. See [frontend handoff](reports/FRONTEND_HANDOFF.md) for definitions and interpretation rules.
 
